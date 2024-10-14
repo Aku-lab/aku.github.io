@@ -15,8 +15,8 @@
         }
 
         body {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            background: linear-gradient(135deg, #ff7e00, #ff3d00);
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #00c6ff, #0072ff);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -26,29 +26,28 @@
         }
 
         .container {
-            background-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             border-radius: 15px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
-            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            padding: 30px;
             width: 90%;
             max-width: 450px;
             text-align: center;
-            position: relative;
             backdrop-filter: blur(10px);
+            position: relative;
         }
 
         h1 {
             font-size: 2.5rem;
-            color: #fff;
             margin-bottom: 20px;
-            font-weight: bold;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            color: #ffcc00; /* Bright yellow for contrast */
         }
 
         .task-display {
-            background-color: rgba(255, 255, 255, 0.4);
+            background-color: rgba(255, 255, 255, 0.2);
             border: 1px solid #fff;
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 15px;
             margin-bottom: 20px;
             text-align: left;
@@ -63,7 +62,7 @@
         }
 
         .task-display:hover {
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.6);
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.6);
         }
 
         .buttons {
@@ -73,34 +72,34 @@
         }
 
         button {
-            background-color: #ff3d00;
+            background-color: #ff0072; /* Bright pink */
             color: #fff;
             border: none;
             padding: 12px 18px;
-            border-radius: 5px;
+            border-radius: 8px;
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
             width: 48%;
-            box-shadow: 0 4px 15px rgba(255, 61, 0, 0.5);
+            box-shadow: 0 4px 15px rgba(255, 0, 114, 0.5);
         }
 
         button:hover {
-            background-color: #e63900;
+            background-color: #e6005c; /* Darker pink */
             transform: translateY(-2px);
         }
 
         button:active {
             transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(255, 61, 0, 0.5);
+            box-shadow: 0 2px 10px rgba(255, 0, 114, 0.5);
         }
 
         #copy-message {
             position: absolute;
-            top: -20px;
+            top: -25px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #28a745;
+            background-color: #28a745; /* Green for success */
             color: white;
             padding: 5px 10px;
             border-radius: 5px;
@@ -114,6 +113,9 @@
             margin-top: 20px;
             font-size: 12px;
             color: #fff;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
         }
 
         @media (max-width: 768px) {
@@ -213,13 +215,11 @@ Link: ${shuffledTasks[1].link}
             <button onClick="generateTasks()">Generate New Tasks</button>
             <button onClick="copyToClipboard()">Copy to Clipboard</button>
         </div>
+        <footer>
+            Made by [Your Name]
+        </footer>
     </div>
-
-    <footer>
-        Powered by Randomness
-    </footer>
 
 </body>
 
 </html>
-
