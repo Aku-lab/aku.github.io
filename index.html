@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Random Task Generator</title>
+    <title>Anime Task Generator</title>
     <style>
         /* Resetting default margins and paddings */
         * {
@@ -15,44 +15,45 @@
         }
 
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #74ebd5, #ACB6E5);
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: linear-gradient(135deg, #ff7e00, #ff3d00);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            color: #333;
+            color: #fff;
             overflow: hidden;
         }
 
         .container {
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.2);
             border-radius: 15px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5);
             padding: 25px;
             width: 90%;
             max-width: 450px;
             text-align: center;
-            position: relative; /* Ensures message is positioned relative to the container */
+            position: relative;
+            backdrop-filter: blur(10px);
         }
 
         h1 {
             font-size: 2.5rem;
-            color: #007bff;
+            color: #fff;
             margin-bottom: 20px;
             font-weight: bold;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
         }
 
         .task-display {
-            background-color: #f0f8ff;
-            border: 1px solid #ddd;
+            background-color: rgba(255, 255, 255, 0.4);
+            border: 1px solid #fff;
             border-radius: 8px;
             padding: 15px;
             margin-bottom: 20px;
             text-align: left;
             white-space: pre-wrap;
-            word-wrap: break-word; /* Fixes long links */
+            word-wrap: break-word;
             font-family: 'Courier New', monospace;
             min-height: 140px;
             font-size: 1rem;
@@ -62,7 +63,7 @@
         }
 
         .task-display:hover {
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.6);
         }
 
         .buttons {
@@ -72,8 +73,8 @@
         }
 
         button {
-            background-color: #007bff;
-            color: white;
+            background-color: #ff3d00;
+            color: #fff;
             border: none;
             padding: 12px 18px;
             border-radius: 5px;
@@ -81,26 +82,25 @@
             cursor: pointer;
             transition: background-color 0.3s, transform 0.3s;
             width: 48%;
-            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
+            box-shadow: 0 4px 15px rgba(255, 61, 0, 0.5);
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #e63900;
             transform: translateY(-2px);
         }
 
         button:active {
             transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(0, 123, 255, 0.4);
+            box-shadow: 0 2px 10px rgba(255, 61, 0, 0.5);
         }
 
-        /* The subtle message that appears after copying */
         #copy-message {
             position: absolute;
             top: -20px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #4CAF50;
+            background-color: #28a745;
             color: white;
             padding: 5px 10px;
             border-radius: 5px;
@@ -113,7 +113,7 @@
         footer {
             margin-top: 20px;
             font-size: 12px;
-            color: #666;
+            color: #fff;
         }
 
         @media (max-width: 768px) {
@@ -189,7 +189,7 @@ Link: ${shuffledTasks[1].link}
                 setTimeout(() => {
                     copyMessage.style.display = "none";
                 }, 300);
-            }, 1500);  // Message stays for 1.5 seconds
+            }, 1500); // Message stays for 1.5 seconds
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -204,7 +204,7 @@ Link: ${shuffledTasks[1].link}
 <body>
 
     <div class="container">
-        <h1>Random Task Generator</h1>
+        <h1>Anime Task Generator</h1>
         <div class="task-display" id="task-display">
             <!-- Random tasks will be displayed here -->
         </div>
@@ -222,5 +222,3 @@ Link: ${shuffledTasks[1].link}
 </body>
 
 </html>
-
-
