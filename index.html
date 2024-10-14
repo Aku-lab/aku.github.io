@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Anime Task Generator</title>
-    <script type="text/javascript" src="page.js"></script>
     <style>
+        /* Resetting default margins and paddings */
         * {
             margin: 0;
             padding: 0;
@@ -16,43 +16,37 @@
 
         body {
             font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #00c6ff, #0072ff);
+            background: linear-gradient(135deg, #141E30, #243B55); /* Dark gradient */
             color: #fff;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
             padding: 20px;
+            overflow: hidden; /* Prevent overflow on smaller screens */
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.6);
             border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
             padding: 30px;
-            width: 100%;
-            max-width: 600px;
+            width: 90%; /* More responsive */
+            max-width: 500px;
             text-align: center;
             backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .container:hover {
-            transform: translateY(-5px);
         }
 
         h1 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.3);
             color: #ffcc00; /* Bright yellow for contrast */
         }
 
         .task-display {
-            background-color: rgba(255, 255, 255, 0.2);
-            border: 1px solid #fff;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid #ffcc00; /* Bright yellow border */
             border-radius: 10px;
             padding: 20px;
             margin-bottom: 20px;
@@ -64,13 +58,19 @@
             font-size: 1rem;
             position: relative;
             cursor: pointer;
+            transition: transform 0.3s; /* Animation on hover */
+        }
+
+        .task-display:hover {
+            transform: scale(1.02); /* Slight scaling effect */
+            background-color: rgba(255, 255, 255, 0.2); /* Lighter background on hover */
         }
 
         .buttons {
             display: flex;
             justify-content: space-between;
             gap: 10px;
-            flex-wrap: wrap;
+            flex-wrap: wrap; /* Ensure buttons stack on smaller screens */
         }
 
         button {
@@ -81,14 +81,14 @@
             border-radius: 8px;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-            width: calc(50% - 5px);
+            transition: background-color 0.3s, transform 0.3s;
+            width: 48%; /* Adjust button width */
             box-shadow: 0 4px 15px rgba(255, 0, 114, 0.5);
         }
 
         button:hover {
             background-color: #e6005c; /* Darker pink */
-            transform: scale(1.05);
+            transform: translateY(-2px); /* Slight lift effect on hover */
         }
 
         #copy-message {
@@ -115,14 +115,17 @@
             width: 100%;
         }
 
-        /* Responsive Design */
         @media (max-width: 600px) {
             h1 {
-                font-size: 2rem;
+                font-size: 2rem; /* Smaller font size for smaller screens */
             }
 
             button {
-                width: 100%;
+                width: 100%; /* Full width buttons on small screens */
+            }
+
+            .task-display {
+                min-height: 100px; /* Adjust height for smaller screens */
             }
         }
     </style>
