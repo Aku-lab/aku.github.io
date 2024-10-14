@@ -32,6 +32,7 @@
             width: 90%;
             max-width: 400px;
             text-align: center;
+            position: relative; /* Ensures message is positioned relative to the container */
         }
 
         h1 {
@@ -84,6 +85,22 @@
             background-color: #0056b3;
         }
 
+        /* The subtle message that appears after copying */
+        #copy-message {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
         footer {
             margin-top: 20px;
             font-size: 12px;
@@ -114,7 +131,6 @@
                 font-size: 13px;
             }
         }
-
     </style>
     <script type="text/javascript">
         "use strict";
@@ -149,10 +165,22 @@ Link: ${shuffledTasks[1].link}
         function copyToClipboard() {
             const text = document.getElementById("task-display").textContent;
             navigator.clipboard.writeText(text).then(() => {
-                alert('Tasks copied to clipboard!');
+                showCopyMessage();
             }).catch(err => {
-                alert('Failed to copy tasks!');
+                console.log('Failed to copy tasks!');
             });
+        }
+
+        function showCopyMessage() {
+            const copyMessage = document.getElementById("copy-message");
+            copyMessage.style.display = "block";
+            copyMessage.style.opacity = "1";
+            setTimeout(() => {
+                copyMessage.style.opacity = "0";
+                setTimeout(() => {
+                    copyMessage.style.display = "none";
+                }, 300);
+            }, 1500);  // Message stays for 1.5 seconds
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -171,6 +199,7 @@ Link: ${shuffledTasks[1].link}
         <div class="task-display" id="task-display">
             <!-- Random tasks will be displayed here -->
         </div>
+        <span id="copy-message">Tasks Copied!</span> <!-- Subtle message after copying -->
         <div class="buttons">
             <button onClick="generateTasks()">Generate New Tasks</button>
             <button onClick="copyToClipboard()">Copy to Clipboard</button>
