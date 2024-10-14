@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="style2.css">
+    <title>Random Task Generator</title>
+    <style type="text/css">
+        #task {
+            font: bold 100% 'Courier New', monospace;
+            width: 100%;
+            height: 4em;
+            resize: none;
+            border: 1px solid;
+            padding: 0.2em;
+            margin: 0.2em 0px;
+        }
+    </style>
+    <script type="text/javascript">
+        "use strict";
+
+        // Task lists
+        const tasks = {
+            1: [
+                { name: "Lakhori-Haveli Dharampura", link: "https://maps.app.goo.gl/kKvKHpWLqZqcdXQw6" },
+                { name: "Bukhara", link: "https://maps.app.goo.gl/tfyvzpm2BQogr26c9" }
+            ],
+            2: [
+                { name: "Adi Kailash", link: "https://maps.app.goo.gl/GPkJzX9KsbmrZ2VU8" },
+                { name: "Kedarnath", link: "https://maps.app.goo.gl/pAetUcSbzaQJjCTF8" }
+            ],
+            3: [
+                { name: "Odxel Beach", link: "https://maps.app.goo.gl/7wyPjMnuLTJvf7xTA" },
+                { name: "Cacra Beach", link: "https://maps.app.goo.gl/zDxnM1A8UMeZsxVg9" }
+            ],
+            4: [
+                { name: "Copper Chimney - Authentic Indian Food", link: "https://maps.app.goo.gl/GMQw4Dq53agmSkzh7" },
+                { name: "Punjab Grill Bandra Kurla", link: "https://maps.app.goo.gl/EJ778B5m2RTyG4RN8" }
+            ],
+            5: [
+                { name: "Novotel Kolkata", link: "https://maps.app.goo.gl/cU4bYsqHPs5khP3JA" },
+                { name: "Raajkutir, Kolkata", link: "https://maps.app.goo.gl/ivguKbm7npx1zxMUA" }
+            ],
+            6: [
+                { name: "JW Marriott Hotel Kolkata", link: "https://maps.app.goo.gl/QC4g2kY8fiPQPspE7" },
+                { name: "Hotel Hindusthan International", link: "https://maps.app.goo.gl/fmydGvtMVUgmgSnx6" }
+            ],
+            7: [
+                { name: "Novotel Kolkata", link: "https://maps.app.goo.gl/cU4bYsqHPs5khP3JA" },
+                { name: "Raajkutir, Kolkata", link: "https://maps.app.goo.gl/ivguKbm7npx1zxMUA" }
+            ]
+        };
+
+        // Function to generate random tasks
+        function generateTasks() {
+            const listKeys = Object.keys(tasks);
+            const randomListKey = listKeys[Math.floor(Math.random() * listKeys.length)];
+            const selectedTasks = tasks[randomListKey];
+
+            // Randomly shuffle and pick two tasks from the selected list
+            const shuffledTasks = selectedTasks.sort(() => 0.5 - Math.random()).slice(0, 2);
+
+            // Display the tasks
+            const taskDisplay = shuffledTasks.map(task => `Task: ${task.name}\nLink: ${task.link}`).join('\n\n');
+            document.getElementById("task").value = taskDisplay;
+        }
+
+        window.addEventListener('load', generateTasks, false);
+    </script>
+</head>
+
+<body>
+
+    <div class="hcontainer">
+        <h1>Random Task Generator</h1>
+        <button type="button" onClick="generateTasks()">Generate Random Tasks</button>
+        <textarea id="task" readonly></textarea>
+    </div>
+
+</body>
+
+</html>
