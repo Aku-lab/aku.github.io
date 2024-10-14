@@ -54,12 +54,14 @@
             white-space: pre-wrap;
             word-wrap: break-word;
             font-family: 'Courier New', monospace;
-            min-height: 140px;
+            height: 140px; /* Fixed height */
+            overflow: auto; /* Show scrollbar if content exceeds height */
             font-size: 1rem;
             position: relative;
             cursor: pointer;
             transition: transform 0.3s; /* Animation on hover */
         }
+
 
         .task-display:hover {
             transform: scale(1.02); /* Slight scaling effect */
