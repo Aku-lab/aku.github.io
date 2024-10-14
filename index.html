@@ -115,6 +115,22 @@
             width: 100%;
         }
 
+        /* Input styles */
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            border: 1px solid #ffcc00; /* Bright yellow border */
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+        }
+
         @media (max-width: 600px) {
             h1 {
                 font-size: 2rem; /* Smaller font size for smaller screens */
@@ -180,6 +196,22 @@ Link: ${shuffledTasks[1].link}
             }, 1500); // Message stays for 1.5 seconds
         }
 
+        function addTask() {
+            const nameInput = document.getElementById('task-name');
+            const linkInput = document.getElementById('task-link');
+            const name = nameInput.value.trim();
+            const link = linkInput.value.trim();
+
+            if (name && link) {
+                tasks.push({ name: name, link: link });
+                nameInput.value = '';
+                linkInput.value = '';
+                alert("Task added successfully!");
+            } else {
+                alert("Please enter both a name and a link.");
+            }
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             const taskDisplayBox = document.getElementById('task-display');
             taskDisplayBox.addEventListener('dblclick', copyToClipboard);
@@ -196,6 +228,13 @@ Link: ${shuffledTasks[1].link}
             <!-- Random tasks will be displayed here -->
         </div>
         <span id="copy-message">Tasks Copied!</span> <!-- Subtle message after copying -->
+        
+        <div class="input-group">
+            <input type="text" id="task-name" placeholder="Enter Task Name" />
+            <input type="text" id="task-link" placeholder="Enter Task Link" />
+            <button onclick="addTask()">Add Task</button>
+        </div>
+
         <div class="buttons">
             <button onClick="generateTasks()">Generate New Tasks</button>
             <button onClick="copyToClipboard()">Copy Task</button>
