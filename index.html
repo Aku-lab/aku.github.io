@@ -7,44 +7,60 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Random Task Generator</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+        /* Resetting default margins and paddings */
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #6dd5ed, #2193b0);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            color: #333;
         }
 
         .container {
             background-color: white;
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            width: 350px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            width: 90%;
+            max-width: 400px;
             text-align: center;
         }
 
         h1 {
+            font-size: 1.8rem;
             color: #333;
+            margin-bottom: 20px;
         }
 
         .task-display {
-            background-color: #f0f0f0;
+            background-color: #f7f7f7;
             border: 1px solid #ddd;
             border-radius: 8px;
             padding: 15px;
-            margin: 15px 0;
-            font-family: 'Courier New', monospace;
+            margin-bottom: 20px;
             text-align: left;
             white-space: pre-wrap;
+            font-family: 'Courier New', monospace;
             min-height: 120px;
+            font-size: 0.9rem;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
         }
 
         button {
-            background-color: #28a745;
+            background-color: #2193b0;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -52,16 +68,42 @@
             font-size: 16px;
             cursor: pointer;
             transition: background-color 0.3s;
+            width: 48%;
         }
 
         button:hover {
-            background-color: #218838;
+            background-color: #17a2b8;
         }
 
         footer {
             margin-top: 20px;
             font-size: 12px;
             color: #888;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.3rem;
+            }
+
+            .task-display {
+                font-size: 0.8rem;
+            }
+
+            button {
+                font-size: 13px;
+            }
         }
     </style>
     <script type="text/javascript">
@@ -83,7 +125,6 @@
         ];
 
         function generateTasks() {
-            // Shuffle tasks and pick the first two
             const shuffledTasks = tasks.sort(() => 0.5 - Math.random()).slice(0, 2);
             const taskDisplay = `
 Task 01: ${shuffledTasks[0].name}
@@ -93,6 +134,15 @@ Task 02: ${shuffledTasks[1].name}
 Link: ${shuffledTasks[1].link}
             `;
             document.getElementById("task-display").textContent = taskDisplay;
+        }
+
+        function copyToClipboard() {
+            const text = document.getElementById("task-display").textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Tasks copied to clipboard!');
+            }).catch(err => {
+                alert('Failed to copy tasks!');
+            });
         }
 
         window.addEventListener('load', generateTasks, false);
@@ -106,7 +156,10 @@ Link: ${shuffledTasks[1].link}
         <div class="task-display" id="task-display">
             <!-- Random tasks will be displayed here -->
         </div>
-        <button onClick="generateTasks()">Generate New Tasks</button>
+        <div class="buttons">
+            <button onClick="generateTasks()">Generate New Tasks</button>
+            <button onClick="copyToClipboard()">Copy to Clipboard</button>
+        </div>
     </div>
 
     <footer>
